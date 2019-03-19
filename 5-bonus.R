@@ -1,7 +1,9 @@
 # use with() to access data.frame objects by name
 with() # moves df columns into the local name space, e.g. print(df$name) vs. with(df, print(name))
 
-trimws()
+trimws() # remove white spaces on either side of a string
+
+any() # given a vector of logical values, return true if any value is true
 
 
 # control scientific notation
