@@ -1,0 +1,32 @@
+---
+title: "R-101: Course Overview"
+author: "Mark Egge (High Street)"
+date: "11/8/2019"
+output: html_document
+---
+
+# What is R
+
+R is an open source statistical programming language
+
+# Course Structure
+
+## Lesson 1: What is R, Getting Started
+
+## Lesson 2: Data Structures in R (Vectors, Lists, and Data Frames)
+
+## Lesson 3: Subsetting and Accessors (Getting Specific Items of Data)
+
+## Lesson 4: Programming Control Structures (If / Else, Loops, etc.)
+
+## Lesson 5: Utility Functions, Saving / Loading Data
+
+## Lesson 6: R Packages
+
+## Lesson 7: data.table (and dplyr)
+
+## Lesson 8: ggplot2
+
+## Lesson 9: Shiny
+
+## Lesson 10: RLeaflet

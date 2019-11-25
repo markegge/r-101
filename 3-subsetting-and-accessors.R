@@ -4,23 +4,33 @@ a[3]
 a[c(2, 4)]
 
 # Data Frames
-df <- data.frame(name = c("Bobby", "Joe", "Sue", "Jane"), 
-                 hair = c("Brown", "Black", "Brown", "Blonde"),
-                 age = c(55, 23, 34, 35), 
+df <- data.frame(name = c("Bobby", "Joe", "Sue", "Jane", "Brenda"), 
+                 hair = c("Brown", "Black", "Brown", "Blonde", NA),
+                 age = c(55, 23, 34, 35, NA), 
                  stringsAsFactors = FALSE)
 
 # Select ROWS by Index or Logical Vector
-df[x, y]
+# e.g. df[x, y]
 df[1, ]
 
-df[which(df$name == "Bobby" & df$hair == "Brown"), ]
+# Use which() when specifying multiple logical criteria (unless using data.table)
+df[which(df$name == "Bobby" | df$hair == "Brown"), ] # yes
+df[df$name == "Bobby" | df$hair == "Brown", ] # no
+
 
 df[1:2, ]
 df[which(df$age < 35), ]
 
-# Select COLUMNS by name or with $
-df[1, c("name", "hair")]
-df[1, ]$name
+# Select COLUMNS by name or with $ or with [[ ]]
+df[1, c("name", "hair")] # select multiple columns
+df[1, ][["name"]]
+df[1, ]$name  # $ is just a shorthand for [[ ]]
+
+
+var <- "name"
+df[1, ]$var # what happens?
+df[1, ][[var]]
+
 
 # omit row selector to select all
 df[, "name"]

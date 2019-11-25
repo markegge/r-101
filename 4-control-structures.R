@@ -24,10 +24,6 @@ f2("Greetings", "John")
 
 # Control Structures -----------------------------------------------------------
 
-# For Loops
-for (i in 1:10) {
-  print(i)
-}
 
 weather_advisor <- function(weather) {
   if (weather == "Rain") {
@@ -45,8 +41,15 @@ for (weather in forecast) {
   print(weather_advisor(weather))
 }
 
+# For Loops
+for (i in 1:10) {
+  print(i)
+}
+
+# Note: For loops are considered poor form in R. Instead, use an apply function
+
 # lapply applies a function to each element of a list (or vector, or matrix), returning a list
-# lapply(forecast, weather_advisor)
+lapply(forecast, weather_advisor)
 
 # sapply applied a function to each element of a list and returns a named vector
 sapply(forecast, weather_advisor)
