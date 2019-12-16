@@ -1,6 +1,6 @@
 # Intro to R
 
-# R Origins
+# How R Originated
 # - S (Bell Labs)
 # - R vs. RStudio
 
