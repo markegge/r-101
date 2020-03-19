@@ -13,6 +13,10 @@ df <- data.frame(height = sample(52:78, 10),
                  gender = sample(c("female", "male"), 10, replace = TRUE),
                  weight = sample(100:200, 10))
 
+DT <- data.table(height = sample(52:78, 10), 
+                 gender = sample(c("female", "male"), 10, replace = TRUE),
+                 weight = sample(100:200, 10))
+
 DT <- as.data.table(df)
 
 # - or -
@@ -22,9 +26,11 @@ setDT(df) # modifies in place
 # data.table uses with() by default
 # equivalent - select the weight of males taller than 55 inches
 df[df$gender == "male", ]
+
 DT[gender == "male"]
   
-df[which(df$height > 55 & df$gender == "male"), "weight"]
+# the next three statements are equivalent
+df[which(df$height > 55 & df$gender == "male"), c("weight", "gender")]
 
 with(df, df[which(height > 55 & gender == "male"), "weight"])
 
@@ -46,9 +52,12 @@ DT[height > 60]
 (setorder(DT, gender, -height))
 
 # Grouping
-DT[, mean(height), by = gender]
+DT[, .N, by = gender]
 
 DT[, print(.SD), by = gender]
+
+DT[, list(avg_height = mean(height)), by = gender]
+
 
 DT[, .(avg_height = mean(height),
        max_weight = max(weight)), by = gender]
@@ -59,16 +68,30 @@ DT[, .(count = .N), by = gender]
 
 
 # make males taller and heavier
-DT[gender == "male", height := height + 2L]
+DT[, hair_color := sample(c("brown", "red"), size = 10, replace = TRUE)]
+
+DT[, hair_color := "green"]
+  
+DT[height < 70, hair_color := "blue"]
+
+DT[gender == "male", height := height + 20L]
 DT[gender == "male", weight := weight +  20L]
 
 # same as above, but in one line
-DT[gender == "male", `:=`(height = height + 2L, weight = weight + 20L)]
+DT[gender == "male", `:=`(height = height + 2L, 
+                          weight = weight + 20L,
+                          gender = "female")]
+
+DT[gender == "female", height := height + 2L]
+
+DT[gender == "female" & weight > 150, height := height + 3L]
 
 
 DT[, eye_color := sample(c("green", "brown", "blue"), .N, replace = TRUE)]
+
 DT[, bmi := weight / height]
 hist(DT$bmi)
+
 DT[, bmi := NULL]
 
 
@@ -83,9 +106,9 @@ DT[sizes, on = c("height>=lower", "height<upper")]
 
 sizes[DT, on = c("lower<=height", "upper>height")]
 
+
+
 # foverlaps
-
-
 # a demonstration
 
 sites <- fread("data/ADTP0102_Collection_Sites.csv") # ADT Coverage Count Location Master.
@@ -136,7 +159,7 @@ rm(ihi_cols)
 sites <- ihi[sites,
              on = c("HWY_NUM==HWY_NUM", 
                     "BEG_REF_POST_NUM<=REF_POST_NUM", 
-                    "END_REF_POST_NUM>=REF_POST_NUM")]
+                    "END_REF_POST_NUM>REF_POST_NUM")]
 
 
 sites[, ID := paste(SITE_ID, ADT_CNT_TYP, sep = "-")]
@@ -187,9 +210,6 @@ count_stats <- counts[, .(Count = .N,
 # reshape
 # create panel dataset
 counts[, truk_pct := TRUK_ADT_TOT_NUM / ADJ_ADT_TOT_NUM]
-
-# write the file out
-fwrite(counts, file = "output/counts.csv")
 
 
 truk_pcts <- dcast(counts[!is.na(SITE_ID) & YEAR >= 1990 & YEAR <= 2017], 

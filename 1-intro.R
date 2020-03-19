@@ -32,6 +32,7 @@ next_year <- 2020 # Yes!
 # Projects, Git, and Project Layout: https://nicercode.github.io/blog/2013-04-05-projects/ 
 
 # Placing Functions:
+
 # Specific functions belong in context. 
 # Short, repeatedly used functions belong at the top of the R file. 
 # Medium-length functions should be placed in "./R/functions.R". 
@@ -59,10 +60,14 @@ dput(a)   # prints in literal notation
 unique(a) # the unique values in the vector a
 table(a)  # count unique values
 
+paste("joined with", "part two", sep = "+")
+
 paste(a)
+paste(a, collapse = "::")
+
 paste(a, a)
 paste(a, a, sep = "_")
-paste(a, collapse = "^")
+
 
 c(a, a, a)     # combine objects into a vector c(a, a, ...)
 cbind(a, a, a) # combine objects as columns

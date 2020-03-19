@@ -3,14 +3,22 @@
 class(1234) # numeric
 
 # classes can have multiple types
-typeof(1234)
+typeof(1234L)
+
 typeof(as.integer(1234))
+typeof(as.double(1234L))
+typeof(as.character(1234))
 
 class(TRUE) # logical
 
 class("1234") # character
 
 class(factor(c("a", "b", "c", "d"))) # factor
+
+a_factor <- as.factor(a)
+class(a_factor)
+as.integer(a_factor)
+read.csv(stringsAsFactors = FALSE)
 
 # ######################
 #       Data Types
@@ -26,7 +34,7 @@ NA
 c(1, 2, 3, 4) 
 
 # Vector (of character class)
-c(1, "2", 3, NA) 
+c(1, "2", 3, NA)
 
 # Range
 1:4

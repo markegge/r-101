@@ -3,13 +3,15 @@
 
 # Function arguments may be specified by sequence, or by name
 
-greet <- function(greeting = "Hello", name = "World") { 
+greet <- function (greeting = "Hello", name = "World") { 
   message <- paste(greeting, name)
   return(message)
 }
+
 greet()
 greet(name = "Jane")
 greet("'Sup")
+greet("'Sup", "Jane")
 greet(name = "Pardner", greeting = "Howdy")
 
 # Return statements are optional, but should be used where they increase clarity
@@ -23,7 +25,6 @@ f2("Greetings", "John")
 
 
 # Control Structures -----------------------------------------------------------
-
 
 weather_advisor <- function(weather) {
   if (weather == "Rain") {
@@ -59,7 +60,7 @@ l <- list(first = c(1, 2, 3),
           second = c(100, 200, 300),
           third = c(1000, 2000, 3000))
 
-lapply(l, sum) 
+lapply(l, sum)
 sapply(l, sum) 
 
 
@@ -69,7 +70,9 @@ sapply(l, sum)
 (m <- matrix(1:20, nrow = 5, ncol = 4))
 
 # Sum the rows
-for(i in 1:nrow(m)) print(sum(m[i, ])) # Slow, Inelegant
+for(i in 1:nrow(m)) {
+  print(sum(m[i, ])) # Slow, Inelegant
+}
 
 apply(m, 1, sum) # Fast, Elegant
 
@@ -81,6 +84,11 @@ m[2:4, 2:3] <- 99
 
 # count unique values per row
 apply(m, 1, function (x) { length(unique(x)) })
+
+num_unique <- function(x) {
+  return(length(unique(x)))
+}
+apply(m, 1, num_unique)
 
 # More complicated functions can be defined separately, or in line
 # determine mode value of each row
