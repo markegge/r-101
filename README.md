@@ -2,6 +2,8 @@
 
 Author: Mark Egge
 
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/markegge/r-101/master?urlpath=rstudio)
+
 R is an open source statistical programming language. R is commonly used for data science. 
 
 This repository contains the files I use to teach a brief crash course on R. It covers R basics, key data types, accessors, control structures, a few helpful tips and tricks, and a brief introduction to the powerful data.table package.

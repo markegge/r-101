@@ -3,9 +3,8 @@ library(data.table)
 # Fast aggregation of large data (e.g. 100GB in RAM), 
 # fast ordered joins, 
 # fast add/modify/delete of columns by group using no copies at all, 
-# list columns, 
 # friendly and fast character-separated-value read/write. 
-# Offers a natural and flexible syntax, for faster development.
+# Offers a concise syntax for faster development.
 
 # DT[i, j, by]
 

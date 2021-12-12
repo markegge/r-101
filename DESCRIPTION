@@ -1,0 +1,18 @@
+Type: Compendium
+Package: A Brief Introduction to R
+Title: Training and Example Files
+Version: 0.0.1
+Authors@R: 
+    person(given = "Mark",
+           family = "Egge",
+           role = c("aut", "cre"),
+           email = "egge@highstreetconsulting.com")
+Description: Support files for training to use R for transportation data
+    science.
+License: MIT License
+Depends: 
+    data.table,
+    ggplot2,
+    rmarkdown
+Encoding: UTF-8
+LazyData: true
