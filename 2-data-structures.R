@@ -1,5 +1,10 @@
 # Data Types and Data Structures
 
+
+# ######################
+#       Data Types
+# ######################
+
 class(1234) # numeric
 
 # classes can have multiple types
@@ -18,11 +23,11 @@ class(factor(c("a", "b", "c", "d"))) # factor
 a_factor <- as.factor(a)
 class(a_factor)
 as.integer(a_factor)
-read.csv(stringsAsFactors = FALSE)
 
-# ######################
-#       Data Types
-# ######################
+# ##########################
+#       Data Structures
+# ##########################
+
 
 # Scalar
 1 

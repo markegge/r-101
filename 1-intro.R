@@ -4,7 +4,7 @@
 # - S (Bell Labs)
 # - R vs. RStudio
 
-# R - kinda a hot mess. E.g.: colnames() vs. row.names()
+# R - kinda a hot mess. E.g.: colnames() vs. row.names() vs. rownames()
 
 
 # R Studio
@@ -19,7 +19,7 @@
 
 # Logical values
 result <- TRUE # Yes
-result <- T # No
+result <- T # Not recommended
 
 # What.the.dot? Older R style once favored using periods as part of variable
 # names. Modern style avoids periods in variable names.
@@ -82,3 +82,4 @@ var(v)  # calculates the variance of the vector
 sum(v)
 cumsum(v)  # check what this function is doing
 median(v)
+
