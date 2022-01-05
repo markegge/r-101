@@ -1,4 +1,1 @@
-install.packages(
-  "data.table",
-  "rmarkdown"
-)
+install.packages("data.table")
